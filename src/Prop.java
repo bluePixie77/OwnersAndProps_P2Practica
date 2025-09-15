@@ -9,11 +9,11 @@ public class Prop {
 
     // Constructor
 
-    public Prop(String propID, String address, String city, float price) {
+    public Prop(String propID, String address, String city) {
         this.propID = propID;
         this.address = address;
         this.city = city;
-        this.price = price;
+        this.price = 0.0f;
     }
 
     // Setters
@@ -46,11 +46,13 @@ public class Prop {
 
     // Altres mètodes
      public boolean isCheaperThan(Prop p){
-        return true;
+        //return p.price < p2.price; ?
+         return false;
      }
 
      public boolean sameCity(Prop p){
-        return true;
+        //return p.city == p2.city; ?
+        return false;
      }
 
 }

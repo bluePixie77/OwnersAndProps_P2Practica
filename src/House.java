@@ -5,10 +5,10 @@ public class House extends Prop{
     private boolean swimmingpool;
 
     // Constructor
-    public House(String propID, String address, String city, float price, int numRooms, boolean swimmingpool) {
-        super(propID, address, city, price);
+    public House(String propID, String address, String city, int numRooms) {
+        super(propID, address, city);
         this.numRooms = numRooms;
-        this.swimmingpool = swimmingpool;
+        this.swimmingpool = false;
     }
 
     // Setters
@@ -26,6 +26,5 @@ public class House extends Prop{
     public boolean isSwimmingpool() {
         return swimmingpool;
     }
-
-    // Altres mètodes
+    
 }

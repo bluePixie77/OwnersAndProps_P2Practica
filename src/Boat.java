@@ -5,10 +5,10 @@ public class Boat extends Prop{
     private boolean navegable;
 
     // Constructor
-    public Boat(String propID, String address, String city, float price, float length, boolean navegable) {
-        super(propID, address, city, price);
+    public Boat(String propID, String address, String city, float length) {
+        super(propID, address, city);
         this.length = length;
-        this.navegable = navegable;
+        this.navegable = true;
     }
 
     // Setters

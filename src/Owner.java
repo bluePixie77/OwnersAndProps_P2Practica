@@ -7,11 +7,11 @@ public class Owner {
     int numProps;
 
     // Constructor
-    public Owner(String name, String address, int numProps) {
+    public Owner(String name, String address) {
         this.name = name;
         this.address = address;
-        this.numProps = numProps;
-        this.props = new Prop[5];
+        this.numProps = 5;
+        this.props = new Prop[numProps];
     }
 
     // Setters
@@ -51,19 +51,40 @@ public class Owner {
     }
 
     public float cheapestPrice(){
-        return 0;
+        float cP = props[1].getPrice();
+        for(int i=0; i<numProps; i++){
+            if(props[i].getPrice() < cP){
+                cP = props[i].getPrice();
+            }
+        }
+        return cP;
     }
 
     public float expensivePrice(){
-        return 0;
+        float eP = props[1].getPrice();
+        for(int i=0; i<numProps; i++){
+            if(props[i].getPrice() > eP){
+                eP = props[i].getPrice();
+            }
+        }
+        return eP;
     }
 
     public float averagePrices(){
-        return 0;
+        int sumP = 0;
+        for(int i=0; i<numProps; i++){
+            sumP += props[i].getPrice();
+        }
+        return (float)sumP/(float)numProps;
     }
 
     public String cheapestProp(){
-        return "";
+        for(int i=0; i<numProps; i++){
+            if(cheapestPrice() == props[i].getPrice()){
+                return props[i].getPropID();
+            }
+        }
+        return "Prop not found";
     }
 
     public void sortPropsByPrice(){
