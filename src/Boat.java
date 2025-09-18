@@ -2,7 +2,7 @@ public class Boat extends Prop{
 
     // Atributs
     private float length;
-    private boolean navegable;
+    private boolean navegable; // valor  per defecte de les variables booleanes és 'false'
 
     // Constructor
     public Boat(String propID, String address, String city, float length) {

@@ -87,7 +87,34 @@ public class Owner {
         return "Prop not found";
     }
 
+    public void sort(int[] x){      // SORT BÀSIC (SABER)
+        boolean sorted = false;
+        while(!sorted){
+            sorted = true;
+            for(int i=0; i<x.length-1; i++){
+                if(x[i]>x[i+1]){
+                    int temp = x[i];
+                    x[i] = x[i+1];
+                    x[i+1] = temp;
+                    sorted = false;
+                }
+            }
+        }
+    }
+
     public void sortPropsByPrice(){
+        boolean sorted = false;
+        while(!sorted){
+            sorted = true;
+            for(int i=0; i<numProps-1; i++){
+                if(props[i].getPrice() > props[i+1].getPrice()){
+                    Prop temp = props[i];
+                    props[i] = props[i+1];
+                    props[i+1] = temp;
+                    sorted = false;
+                }
+            }
+        }
 
     }
 

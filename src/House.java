@@ -1,6 +1,6 @@
 public class House extends Prop{
 
-    // Atributs
+    // Atributs o propietats
     private int numRooms;
     private boolean swimmingpool;
 

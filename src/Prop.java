@@ -46,11 +46,12 @@ public class Prop {
 
     // Altres mètodes
      public boolean isCheaperThan(Prop p){
-        return p.price < price;
+        return this.price < p.price;
+        // return this.getPrice() < p.getPrice();
      }
 
      public boolean sameCity(Prop p){
-        return p.city == city;
+        return this.getCity().equals(p.getCity()); // esteim comparant STRINGS
      }
 
 }
