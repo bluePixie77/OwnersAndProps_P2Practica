@@ -1,30 +1,22 @@
-public class House extends Prop{
+public class House extends Prop {
 
-    // Atributs o propietats
+    // Propietats
     private int numRooms;
-    private boolean swimmingpool;
+    private boolean swimmingPool;
+
 
     // Constructor
     public House(String propID, String address, String city, int numRooms) {
         super(propID, address, city);
         this.numRooms = numRooms;
-        this.swimmingpool = false;
-    }
-
-    // Setters
-    public void setNumRooms(int numRooms) {
-        this.numRooms = numRooms;
-    }
-    public void setSwimmingpool(boolean swimmingpool) {
-        this.swimmingpool = swimmingpool;
+        this.swimmingPool = false;
     }
 
     // Getters
-    public int getNumRooms() {
-        return numRooms;
-    }
-    public boolean isSwimmingpool() {
-        return swimmingpool;
-    }
-    
+    public int getNumRooms() {return numRooms;}
+    public boolean isSwimmingPool() {return swimmingPool;}
+
+    // Setters
+    public void setNumRooms(int numRooms) {this.numRooms = numRooms;}
+    public void setSwimmingPool(boolean swimmingPool) {this.swimmingPool = swimmingPool;}
 }

@@ -1,113 +1,108 @@
 public class Owner {
 
-    // Atributs
-    String name;
-    String address;
-    Prop[] props;
-    int numProps;
+    // Propietats
+    private String name;
+    private String address;
+    private Prop[] props;
+    private int numProps;
 
     // Constructor
     public Owner(String name, String address) {
         this.name = name;
         this.address = address;
-        this.numProps = 5;
-        this.props = new Prop[numProps];
-    }
-
-    // Setters
-    public void setName(String name) {
-        this.name = name;
-    }
-    public void setAddress(String address) {
-        this.address = address;
-    }
-    public void setProps(Prop[] props) {
-        this.props = props;
-    }
-    public void setNumProps(int numProps) {
-        this.numProps = numProps;
+        this.props = new Prop[5];
+        this.numProps = 0;
     }
 
     // Getters
-    public String getName() {
-        return name;
-    }
-    public String getAddress() {
-        return address;
-    }
-    public Prop[] getProps() {
-        return props;
-    }
-    public int getNumProps() {
-        return numProps;
-    }
+    public String getName() {return name;}
+    public String getAddress() {return address;}
+    public Prop[] getProps() {return props;}
+    public int getNumProps() {return numProps;}
+
+
+    // Setters
+    public void setName(String name) {this.name = name;}
+    public void setAddress(String address) {this.address = address;}
+    public void setProps(Prop[] props) {this.props = props;}
+    public void setNumProps(int numProps) {this.numProps = numProps;}
 
     // Altres mètodes
     public void addProp(Prop p){
-        if(numProps<props.length){
-            props[numProps] = p;
-            numProps++;
+        if(this.numProps<this.props.length) {
+            this.props[this.numProps] = p;
+            this.numProps++;
         }
     }
 
     public float cheapestPrice(){
-        float cP = props[1].getPrice();
-        for(int i=0; i<numProps; i++){
-            if(props[i].getPrice() < cP){
-                cP = props[i].getPrice();
+        float min = Float.MAX_VALUE;
+        for(int i=0; i<this.numProps; i++){
+            Prop pi = this.props[i];
+            if(pi.getPrice()< min){
+                min = pi.getPrice();
             }
         }
-        return cP;
+        return min;
     }
 
     public float expensivePrice(){
-        float eP = props[1].getPrice();
-        for(int i=0; i<numProps; i++){
-            if(props[i].getPrice() > eP){
-                eP = props[i].getPrice();
+        float max = Float.MIN_VALUE;
+        for(int i=0; i<this.numProps; i++){
+            Prop pi = this.props[i];
+            if(pi.getPrice()> max){
+                max = pi.getPrice();
             }
         }
-        return eP;
+        return max;
     }
 
     public float averagePrices(){
-        int sumP = 0;
-        for(int i=0; i<numProps; i++){
-            sumP += props[i].getPrice();
+        float sum = 0.0f;
+        for(int i=0; i<this.numProps; i++){
+            Prop pi = this.props[i];
+            sum += pi.getPrice();
         }
-        return (float)sumP/(float)numProps;
+        return sum / this.numProps;
     }
 
-    public String cheapestProp(){
-        for(int i=0; i<numProps; i++){
-            if(cheapestPrice() == props[i].getPrice()){
-                return props[i].getPropID();
+    public Prop cheapestProp(){
+        float min = Float.MAX_VALUE;
+        Prop minProp = null;
+        for(int i=0; i<this.numProps; i++){
+            Prop pi = this.props[i];
+            if(pi.getPrice()< min){
+                min = pi.getPrice();
+                minProp = pi;
             }
         }
-        return "Prop not found";
+        return minProp;
     }
 
-    public void sort(int[] x){      // SORT BÀSIC (SABER)
+    public void sortPropsByPrice(){
         boolean sorted = false;
         while(!sorted){
-            sorted = true;
-            for(int i=0; i<x.length-1; i++){
-                if(x[i]>x[i+1]){
-                    int temp = x[i];
-                    x[i] = x[i+1];
-                    x[i+1] = temp;
+            sorted =true;
+            for(int i=0; i<this.numProps-1; i++){
+                Prop p1 = this.props[i];
+                Prop p2 = this.props[i+1];
+                if(p1.getPrice() > p2.getPrice()){
+                    Prop pTemp = p1;
+                    p1 = p2;
+                    p2 = pTemp;
                     sorted = false;
                 }
             }
         }
     }
 
-    public void sortPropsByPrice(){
+
+    public void sort(){
         boolean sorted = false;
         while(!sorted){
             sorted = true;
             for(int i=0; i<numProps-1; i++){
-                if(props[i].getPrice() > props[i+1].getPrice()){
+                if(props[i].getPrice()>props[i+1].getPrice()){
                     Prop temp = props[i];
                     props[i] = props[i+1];
                     props[i+1] = temp;
@@ -115,7 +110,5 @@ public class Owner {
                 }
             }
         }
-
     }
-
 }
